@@ -12,6 +12,7 @@ const ContactList = () => {
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
+  
   return (
     <div className={s.container}>
       <ul className={s.list}>

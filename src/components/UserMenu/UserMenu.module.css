@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.avatar {
+  margin-right: 4;
+}
+.name {
+  font-weight: 700;
+  font-size: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+img {
+  display: block;
+  border-radius: 50%;
+}

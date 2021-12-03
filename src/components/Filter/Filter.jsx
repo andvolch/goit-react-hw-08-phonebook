@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { getFilter } from '../../redux/phonebook/phonebook-selectors';
-import { changeFilter } from '../../redux/phonebook/phonebook-actions';
+import { changeFilter } from '../../redux/phonebook/phonebook-slice';
 
 import PropTypes from 'prop-types';
 import s from './Filter.module.css';
@@ -11,11 +11,13 @@ const Filter = () => {
   const onChange = e => {
     dispatch(changeFilter(e.currentTarget.value));
   };
+  
   return (
-    <div className={s.container}>
-      <h3>Finde contacts by name</h3>
+    <div className={s.text}>
+      <h3 className={s.title}>Finde contacts by name</h3>
       <label>
         <input
+          className={s.value}
           type="text"
           name="filter"
           value={filter}

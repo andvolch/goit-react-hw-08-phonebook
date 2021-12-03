@@ -1,10 +1,11 @@
 import { useState } from 'react';
-
 import { useDispatch, useSelector } from 'react-redux';
 import { getContacts } from '../../redux/phonebook/phonebook-selectors';
-import  { addContact } from '../../redux/phonebook/phonebook-operations';
+import  { contactsOperations } from '../../redux/phonebook';
+import { toast } from 'react-toastify';
+import { BtnAdd } from '../Button/Button';
 
-import s from './ContactForm.module.css';
+import s from './Form.module.css';
 
 function ContactForm() {
   const [name, setName] = useState('');
@@ -35,7 +36,11 @@ function ContactForm() {
       resetForm();
       return alert(`${name} is already in the directory`);
     }
-    dispatch(addContact({ name, number }));
+    dispatch(contactsOperations.addContact({ name, number }));
+    toast.success('Contact added to the phonebook!', {
+      position: 'top-center',
+      autoClose: 2500,
+    });
     resetForm();
   };
 
@@ -48,9 +53,10 @@ function ContactForm() {
   return (
     <div className={s.container}>
       <form onSubmit={handleSubmint} className={s.form}>
-        <h3>Name</h3>
-        <label>
+        <h3 className={s.label}>Name</h3>
+        <label >
           <input
+            className={s.input}
             type="text"
             name="name"
             value={name}
@@ -60,9 +66,10 @@ function ContactForm() {
             onChange={handleChange}
           />
         </label>
-        <h3>Number</h3>
-        <label>
+        <h3 className={s.label}>Phone number</h3>
+        <label >
           <input
+            className={s.input}
             type="tel"
             name="number"
             value={number}
@@ -72,14 +79,11 @@ function ContactForm() {
             onChange={handleChange}
           />
         </label>
-        <button type="submit" className={s.button}>
-          Add contact
-        </button>
+        <BtnAdd/>
       </form>
     </div>
   );
 }
-
 
 
 export default ContactForm;

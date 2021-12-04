@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getContacts } from '../../redux/phonebook/phonebook-selectors';
-import  { contactsOperations } from '../../redux/phonebook';
+import  { contactsOperations } from '../../redux/phonebook/index';
 import { toast } from 'react-toastify';
 import { BtnAdd } from '../Button/Button';
 
